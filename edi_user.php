@@ -1,0 +1,27 @@
+
+<?php
+include("connection.php");
+$con = connection();
+
+// Actualizar datos si se ha enviado el formulario
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $lastname = $_POST['lastname'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+
+    $sql = "UPDATE users SET name='$name', lastname='$lastname', username='$username', password='$password', email='$email' WHERE id='$id'";
+    $query = mysqli_query($con, $sql);
+
+    if ($query) {
+        header("location: index.php");
+    }
+}
+?>
+  
+
+
+
+
